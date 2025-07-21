@@ -1,7 +1,7 @@
- **BlackRock Challenge - Autoahorro e Inversión**
+# **BlackRock Challenge - Autoahorro e Inversión**
 
-Este proyecto implementa un sistema de **auto-ahorro e inversión** utilizando **FastAPI** en el backend y un **frontend ligero en HTML + JS**.  
-Simula cómo los redondeos de transacciones y ciertas reglas de inversión (PPR e iShares IVV) impactan en el ahorro a largo plazo, aplicando restricciones y cálculos de interés compuesto ajustados por inflación.
+Este proyecto implementa un sistema de **auto-ahorro e inversión de remanentes de redondeo a multiplos de 100 en gstos** utilizando **FastAPI** en el backend y un **frontend ligero en HTML + JS**.  
+Simula cómo los redondeos de transacciones y ciertas reglas de inversión  impactan en el ahorro a largo plazo, aplicando restricciones y cálculos de interés compuesto ajustados por inflación.
 
 ---
 
@@ -16,28 +16,6 @@ Simula cómo los redondeos de transacciones y ciertas reglas de inversión (PPR 
   - Invocar los endpoints desde un panel de prueba.
 - **Contenedorizado con Docker** para una ejecución rápida.
 - **Documentación interactiva con Swagger** en `http://localhost:5477/docs`.
-
----
-
- **Estructura del proyecto**
-
-blackrock\_app/
-│
-├── app/                      # Lógica del backend
-│   ├── main.py               # Punto de entrada FastAPI
-│   ├── routers/              # Endpoints organizados
-│   ├── core/                 # Lógica de negocio
-│   └── schemas/              # Modelos Pydantic
-│
-├── frontend/                 # Interfaz web
-│   ├── index.html            # Página principal
-│   ├── js/app.js             # Lógica de conexión con backend
-│   └── css/styles.css        # Estilos
-│
-├── Dockerfile                # Imagen Docker (python:3.11-slim-bullseye)
-├── compose.yaml              # Configuración de servicio (puerto 5477)
-├── requirements.txt          # Dependencias
-└── README.md                 # Este archivo
 
 
 ---
@@ -127,25 +105,6 @@ curl -X POST "http://localhost:5477/blackrock/challenge/v1/transactions/parse" \
 * **Backend:** Python 3.11, FastAPI, Uvicorn, Pydantic.
 * **Frontend:** HTML5, JavaScript, Bootstrap.
 * **Contenedores:** Docker, Docker Compose.
-* **Proyecciones financieras:** Interés compuesto ajustado por inflación (4.83% anual).
-
 ---
 
- **Próximos pasos (opcional)**
-
-* Implementar autenticación JWT para usuarios.
-* Exportar reportes de inversión en PDF.
-* Desplegar en **Render**, **Railway** o **Vercel** con Docker.
-
----
-
- **Licencia**
-
-Este proyecto es de uso educativo. Libre para adaptaciones personales.
-
-
----
-
- **Siguiente paso sugerido**  
-¿Te gustaría que te **genere este `README.md` en un archivo listo** y lo incluya en un **nuevo ZIP actualizado** con el backend, frontend y soporte `datetime`?
 
