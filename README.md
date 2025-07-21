@@ -1,16 +1,11 @@
-Aquí tienes un **`README.md` completo y profesional** para tu proyecto. Puedes guardarlo directamente en la raíz de tu carpeta `blackrock_app/`.
-
----
-
-```markdown
-# **BlackRock Challenge - Autoahorro e Inversión**
+ **BlackRock Challenge - Autoahorro e Inversión**
 
 Este proyecto implementa un sistema de **auto-ahorro e inversión** utilizando **FastAPI** en el backend y un **frontend ligero en HTML + JS**.  
 Simula cómo los redondeos de transacciones y ciertas reglas de inversión (PPR e iShares IVV) impactan en el ahorro a largo plazo, aplicando restricciones y cálculos de interés compuesto ajustados por inflación.
 
 ---
 
-## **Características**
+ **Características**
 - **API REST (FastAPI)** con endpoints para:
   - Parsear y validar transacciones.
   - Filtrar por periodos de inversión (q, p, k).
@@ -24,8 +19,7 @@ Simula cómo los redondeos de transacciones y ciertas reglas de inversión (PPR 
 
 ---
 
-## **Estructura del proyecto**
-```
+ **Estructura del proyecto**
 
 blackrock\_app/
 │
@@ -45,53 +39,48 @@ blackrock\_app/
 ├── requirements.txt          # Dependencias
 └── README.md                 # Este archivo
 
-````
 
 ---
 
-## **Requisitos previos**
+ **Requisitos previos**
 - **Docker** >= 20.x
 - **Docker Compose** >= 1.29
-- Navegador web moderno
+- Navegador 
 
----
 
-## **Cómo ejecutar el proyecto**
+ **Cómo ejecutar el proyecto**
 
-### **1. Clonar el repositorio**
-```bash
+ **1. Clonar el repositorio**
 git clone https://github.com/USUARIO/blackrock-app.git
 cd blackrock-app
-````
 
-### **2. Construir y levantar el servicio**
 
-```bash
+ **2. Construir y levantar el servicio**
+
 docker-compose up --build
-```
 
 * La API quedará disponible en `http://localhost:5477`.
 * Swagger UI: `http://localhost:5477/docs`.
 
-### **3. Probar el frontend**
+ **3. Probar el frontend**
 
 Abre el archivo:
 
-```
+
 frontend/index.html
-```
+
 
 * Desde el navegador podrás agregar transacciones, enviar peticiones al backend y ver los resultados.
 
-### **4. Detener el servicio**
+ **4. Detener el servicio**
 
-```bash
+
 docker-compose down
-```
+
 
 ---
 
-## **Endpoints principales**
+ **Endpoints principales**
 
 * **`/blackrock/challenge/v1/transactions:parse`**
   Recibe `{date, amount}`, calcula `ceiling` (redondeo) y `remanent`.
@@ -110,30 +99,30 @@ docker-compose down
 
 ---
 
-## **Ejemplo rápido de uso**
+ **Ejemplo rápido de uso**
 
 **Request:**
 
-```json
+
 {
   "transactions": [
     { "datetime": "2025-07-01T14:30", "amount": 235.5 },
     { "datetime": "2025-07-03T09:15", "amount": 980.25 }
   ]
 }
-```
+
 
 **cURL:**
 
-```bash
+bash
 curl -X POST "http://localhost:5477/blackrock/challenge/v1/transactions/parse" \
 -H "Content-Type: application/json" \
 -d '{"transactions":[{"datetime":"2025-07-01T14:30","amount":235.5},{"datetime":"2025-07-03T09:15","amount":980.25}]}'
-```
+
 
 ---
 
-## **Tecnologías**
+ **Tecnologías**
 
 * **Backend:** Python 3.11, FastAPI, Uvicorn, Pydantic.
 * **Frontend:** HTML5, JavaScript, Bootstrap.
@@ -142,7 +131,7 @@ curl -X POST "http://localhost:5477/blackrock/challenge/v1/transactions/parse" \
 
 ---
 
-## **Próximos pasos (opcional)**
+ **Próximos pasos (opcional)**
 
 * Implementar autenticación JWT para usuarios.
 * Exportar reportes de inversión en PDF.
@@ -150,14 +139,13 @@ curl -X POST "http://localhost:5477/blackrock/challenge/v1/transactions/parse" \
 
 ---
 
-## **Licencia**
+ **Licencia**
 
 Este proyecto es de uso educativo. Libre para adaptaciones personales.
 
-```
 
 ---
 
-# **Siguiente paso sugerido**  
+ **Siguiente paso sugerido**  
 ¿Te gustaría que te **genere este `README.md` en un archivo listo** y lo incluya en un **nuevo ZIP actualizado** con el backend, frontend y soporte `datetime`?
-```
+
