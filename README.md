@@ -1,17 +1,163 @@
-# BlackRock Challenge - Auto Ahorro e Inversión
+Aquí tienes un **`README.md` completo y profesional** para tu proyecto. Puedes guardarlo directamente en la raíz de tu carpeta `blackrock_app/`.
 
-Este proyecto es una API con **FastAPI** y un frontend simple para gestionar transacciones y simulaciones de ahorro e inversión.
+---
+
+```markdown
+# **BlackRock Challenge - Autoahorro e Inversión**
+
+Este proyecto implementa un sistema de **auto-ahorro e inversión** utilizando **FastAPI** en el backend y un **frontend ligero en HTML + JS**.  
+Simula cómo los redondeos de transacciones y ciertas reglas de inversión (PPR e iShares IVV) impactan en el ahorro a largo plazo, aplicando restricciones y cálculos de interés compuesto ajustados por inflación.
+
+---
+
+## **Características**
+- **API REST (FastAPI)** con endpoints para:
+  - Parsear y validar transacciones.
+  - Filtrar por periodos de inversión (q, p, k).
+  - Calcular rendimientos en **Planes Personales de Retiro (PPR)** y **fondos iShares IVV**.
+  - Mostrar métricas de rendimiento y performance.
+- **Frontend visual** con formulario para:
+  - Ingresar transacciones (`datetime`, `amount`).
+  - Invocar los endpoints desde un panel de prueba.
+- **Contenedorizado con Docker** para una ejecución rápida.
+- **Documentación interactiva con Swagger** en `http://localhost:5477/docs`.
+
+---
+
+## **Estructura del proyecto**
+```
+
+blackrock\_app/
+│
+├── app/                      # Lógica del backend
+│   ├── main.py               # Punto de entrada FastAPI
+│   ├── routers/              # Endpoints organizados
+│   ├── core/                 # Lógica de negocio
+│   └── schemas/              # Modelos Pydantic
+│
+├── frontend/                 # Interfaz web
+│   ├── index.html            # Página principal
+│   ├── js/app.js             # Lógica de conexión con backend
+│   └── css/styles.css        # Estilos
+│
+├── Dockerfile                # Imagen Docker (python:3.11-slim-bullseye)
+├── compose.yaml              # Configuración de servicio (puerto 5477)
+├── requirements.txt          # Dependencias
+└── README.md                 # Este archivo
+
+````
+
+---
+
+## **Requisitos previos**
+- **Docker** >= 20.x
+- **Docker Compose** >= 1.29
+- Navegador web moderno
+
+---
+
+## **Cómo ejecutar el proyecto**
+
+### **1. Clonar el repositorio**
+```bash
+git clone https://github.com/USUARIO/blackrock-app.git
+cd blackrock-app
+````
+
+### **2. Construir y levantar el servicio**
+
+```bash
+docker-compose up --build
+```
+
+* La API quedará disponible en `http://localhost:5477`.
+* Swagger UI: `http://localhost:5477/docs`.
+
+### **3. Probar el frontend**
+
+Abre el archivo:
+
+```
+frontend/index.html
+```
+
+* Desde el navegador podrás agregar transacciones, enviar peticiones al backend y ver los resultados.
+
+### **4. Detener el servicio**
+
+```bash
+docker-compose down
+```
+
+---
 
 ## **Endpoints principales**
-- `/blackrock/challenge/v1/transactions:parse`
-- `/blackrock/challenge/v1/transactions:validator`
-- `/blackrock/challenge/v1/transactions:filter`
-- `/blackrock/challenge/v1/returns:ppr`
-- `/blackrock/challenge/v1/returns:ishares`
-- `/blackrock/challenge/v1/performance`
 
-## **Cómo ejecutar**
-1. Clonar el repositorio:
-   ```bash
-   git clone https://github.com/USUARIO/blackrock_app.git
-   cd blackrock_app
+* **`/blackrock/challenge/v1/transactions:parse`**
+  Recibe `{date, amount}`, calcula `ceiling` (redondeo) y `remanent`.
+
+* **`/blackrock/challenge/v1/transactions:validator`**
+  Valida transacciones en base al sueldo y restricciones de PPR.
+
+* **`/blackrock/challenge/v1/transactions:filter`**
+  Filtra transacciones según periodos `q`, `p`, `k`.
+
+* **`/blackrock/challenge/v1/returns:ppr`** y **`/returns:ishares`**
+  Calcula rendimientos y proyecciones hasta los 65 años, ajustando por inflación.
+
+* **`/blackrock/challenge/v1/performance`**
+  Muestra métricas de ejecución, uso de memoria y threads.
+
+---
+
+## **Ejemplo rápido de uso**
+
+**Request:**
+
+```json
+{
+  "transactions": [
+    { "datetime": "2025-07-01T14:30", "amount": 235.5 },
+    { "datetime": "2025-07-03T09:15", "amount": 980.25 }
+  ]
+}
+```
+
+**cURL:**
+
+```bash
+curl -X POST "http://localhost:5477/blackrock/challenge/v1/transactions/parse" \
+-H "Content-Type: application/json" \
+-d '{"transactions":[{"datetime":"2025-07-01T14:30","amount":235.5},{"datetime":"2025-07-03T09:15","amount":980.25}]}'
+```
+
+---
+
+## **Tecnologías**
+
+* **Backend:** Python 3.11, FastAPI, Uvicorn, Pydantic.
+* **Frontend:** HTML5, JavaScript, Bootstrap.
+* **Contenedores:** Docker, Docker Compose.
+* **Proyecciones financieras:** Interés compuesto ajustado por inflación (4.83% anual).
+
+---
+
+## **Próximos pasos (opcional)**
+
+* Implementar autenticación JWT para usuarios.
+* Exportar reportes de inversión en PDF.
+* Desplegar en **Render**, **Railway** o **Vercel** con Docker.
+
+---
+
+## **Licencia**
+
+Este proyecto es de uso educativo. Libre para adaptaciones personales.
+
+```
+
+---
+
+# **Siguiente paso sugerido**  
+¿Te gustaría que te **genere este `README.md` en un archivo listo** y lo incluya en un **nuevo ZIP actualizado** con el backend, frontend y soporte `datetime`?
+```
